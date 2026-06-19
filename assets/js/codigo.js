@@ -37,12 +37,29 @@ list.addEventListener(
   false,
 );
 
+function onClickClear() {
+
+  let taskList = document.getElementById("itemLista")
+
+  if(!taskList.hasChildNodes()){
+    alert("A lista já está vazia");
+  } else {
+
+    taskList.replaceChildren()
+  }
+
+}
+
 // Função para adicionar um novo item à lista
 function addElemento() {
   let li = document.createElement("li");
   // Obtém o valor digitado no campo de input com id="tarefa"
   let inputValue = document.getElementById("tarefa").value;
-  let t = document.createTextNode(inputValue);
+
+  // essa classe manipula datas. O método abaixo devolve a string com a data atual do sistema
+  inputValue = new Date().toLocaleDateString('pt-BR') + " - " + inputValue
+
+  let t = document.createTextNode(inputValue.toUpperCase());
 
   li.appendChild(t);
 
